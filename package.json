@@ -1,12 +1,17 @@
 {
-  "name": "yt-backend",
+  "name": "yt-downloader-backend",
   "version": "1.0.0",
+  "description": "YouTube downloader using RapidAPI",
   "main": "server.js",
   "dependencies": {
-  "express": "^4.18.2",
-  "@distube/ytdl-core": "latest",
-  "cors": "^2.8.5"
-}  "scripts": {
+    "axios": "^1.14.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "scripts": {
     "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
