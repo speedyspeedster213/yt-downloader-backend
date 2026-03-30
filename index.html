@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: transparent; }
+        .box { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.2); text-align: center; color: white; width: 90%; }
+        input { width: 80%; padding: 12px; border-radius: 8px; border: none; margin-bottom: 15px; background: #222; color: white; }
+        button { padding: 12px 25px; background: #ff4757; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #ff6b81; transform: scale(1.05); }
+        .status { font-size: 12px; margin-top: 10px; opacity: 0.7; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" id="videoUrl" placeholder="Paste YouTube Link Here...">
+        <br>
+        <button onclick="startDownload()">Download Video</button>
+        <div class="status" id="msg">Ready to download</div>
+    </div>
+
+    <script>
+        function startDownload() {
+            const url = document.getElementById('videoUrl').value;
+            const msg = document.getElementById('msg');
+            if(!url) return alert("Please paste a link!");
+            
+            msg.innerText = "Connecting to server... (May take 60s if server is sleeping)";
+            // This points to your Render API
+            window.location.href = `/download?url=${encodeURIComponent(url)}`;
+        }
+    </script>
+</body>
+</html>

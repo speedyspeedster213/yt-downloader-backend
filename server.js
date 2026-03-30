@@ -1,3 +1,17 @@
+const cors = require('cors');
+
+// 1. Allow Canva to talk to your server
+app.use(cors());
+
+// 2. Allow Canva to EMBED your server (The "Frame" Permission)
+app.use((req, res, next) => {
+    // This tells browsers: "It's okay if Canva shows my content"
+    res.setHeader("Content-Security-Policy", "frame-ancestors 'self' https://*.canva.com https://*.canva.site");
+    
+    // An older security header some browsers still look for
+    res.setHeader("X-Frame-Options", "ALLOW-FROM https://www.canva.com/");
+    next();
+});
 const express = require('express');
 const ytdl = require('@distube/ytdl-core');
 const app = express();
